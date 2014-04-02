@@ -9,7 +9,7 @@ class ScribblerText < ActiveRecord::Base
           # => Stuff in Here        
   
         #=== include Modules
-        include Scribbler::ScribblerElementSetup
+        include ScribbleCms::ScribblerElementSetup
   
       #== Konstanten
           # => Stuff in Here

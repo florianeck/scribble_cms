@@ -1,4 +1,4 @@
-Scribbler::Engine.routes.draw do
+ScribbleCms::Engine.routes.draw do
   
   %w( container_edit container_add_item group_edit group_destroy image_cropper).each do |a|
     get "/scribbler_admin/#{a}/(:id)", :controller => "scribbler_admin", :action => a

@@ -1,4 +1,4 @@
-module Scribbler
+module ScribbleCms
   module ScribblerElementSetup
     
     def self.included(base)
