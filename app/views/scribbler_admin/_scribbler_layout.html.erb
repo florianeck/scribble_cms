@@ -1,0 +1,6 @@
+<div id="scribbler-admin-area" class="cf">
+  <div id="scribbler-sidebar">
+    <%= render :partial => "/scribbler_admin/scribbler_sidebar" unless request.xhr? %>
+  </div>
+  <div id="scribbler-edit-area"><%= content %></div>
+</div>

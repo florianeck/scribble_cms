@@ -1,0 +1,68 @@
+<%= scribbler_layout do %>
+  
+  <p>
+    Element in <i>'<%= @group.container.description %>'</i>
+    <% if @group.container.element %>
+      auf Seite <i>'<%= @group.container.element.page.name %>'</i>
+    <% end %>
+  </p>
+  
+  <%= form_for @group, :url => scribbler.url_for({:action => "group_update", :id => @group.id}), :html => {:class => "section", :method => :post} do |f| %>
+  <table style="min-width: 940px;" cellspacing="5">
+    <tr>
+      <td>
+        <b><%= link_to_function("Aktueller Zustand", "toggleCol('released')") %></b><br />
+        <i>Klicken um Bereich ein- bzw auszublenden</i>
+      </td>
+      <td>
+        <b><%= link_to_function("In Bearbeitung", "toggleCol('unreleased')") %></b><br />
+        <i>Klicken um Bereich ein- bzw auszublenden</i>
+      </td>
+    </tr>
+    <tr>
+      <td id="released" class="">
+        <%= f.fields_for :released do |u| %>
+            <% @group.released_elements.each do |e| %>
+              <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
+            <% end %>
+        <% end %>
+      </td>
+      <td id="unreleased" class="">
+        <%= f.fields_for :unreleased do |u| %>
+            <% @group.unreleased_elements.each do |e| %>
+              <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
+            <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  
+  <%= f.submit "Änderungen speichern" %>
+  
+  <% if @group.container.scaleable %>
+    <%= link_to "Dieses Element löschen", scribbler.url_for({:action => "group_destroy", :id => @group.id}), 
+      :confirm => "Soll dieses Element gelöscht werden? Dies kann nicht rückgängig gemacht werden.", :class => "icon-minus" %>
+  <% end %>  
+  
+  <% end %>
+
+<% end %>
+
+<%= tinymce %>
+
+<script type="text/javascript">
+  
+toggleCol = function(name){
+  col = $("#"+name)
+  if(col.hasClass("col-visible")){
+    $("#"+name+" *").hide();
+    col.removeClass("col-visible")
+  }else{
+     $("#"+name+" *").show();
+     col.addClass("col-visible")
+  }
+}
+  
+toggleCol('released')  
+</script>
+

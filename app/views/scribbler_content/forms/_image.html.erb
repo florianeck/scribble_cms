@@ -1,0 +1,25 @@
+<%= f.fields_for "#{element.element_type}_#{element.id}" do |e| %>
+ 
+  
+  
+  <%= e.label :image, "Bilddatei" %><br />
+  <%= e.file_field :image %>
+  
+  
+  <p>Klicken Sie auf das Bild um die Abmessungen anzupassen</p>
+  <%= link_to image_tag(element.image.url(:default), :width => "100%"), {:action => "image_cropper", :id => element.id} %>
+  
+  <div style="margin-bottom: 5px;">
+    <%= e.label :copyright, "Copyright" %><br />
+    <%= e.text_field :copyright, :value => element.copyright %>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <%= e.label :alt_text, "ALT-Attribut" %><br />
+    <%= e.text_field :alt_text, :value => element.alt_text %>
+  </div>  
+
+  <%= e.hidden_field :type, :value => element.element_type %>
+  <%= e.hidden_field :id, :value => element.id %>
+<% end %>
+<hr />

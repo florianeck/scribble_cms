@@ -1,0 +1,17 @@
+<%= f.fields_for "#{element.element_type}_#{element.id}" do |e| %>
+  <div style="margin-bottom: 5px;">
+    <%= e.label :title, "Titel des Links" %><br />
+    <%= e.text_field :title, :value => element.title %>
+  </div>
+  
+  <div style="margin-bottom: 5px;"> 
+    <%= e.label :url, "Adresse (http://.../)" %><br />
+    <%= e.text_field :url, :value => element.url %>
+  </div>
+  
+  <%= e.check_box :external, :checked => element.external %>
+  <%= e.label :external, "Externer Link" %>
+  <%= e.hidden_field :type, :value => element.element_type %>
+  <%= e.hidden_field :id, :value => element.id %>
+<% end %>
+<hr />

@@ -1,0 +1,18 @@
+<%= scribbler_layout do %>
+<h3><%= @container.name %> bearbeiten</h3>
+<%= form_for @container, :url => {:action => "container_update", :id => @container.id} do |f| %>
+  <%= f.text_field :description %><br />
+  <div class="field-container-2-cols  cf">
+     <div class="left"><%= f.submit "Änderungen speichern" %></div>
+     <div class="right">
+       <% if @container.scaleable %>
+         <%= link_to "Neues Element einfügen", {:action => "container_add_item", :id => @container.id}, :class => "icon-plus" %>
+       <% end %>
+     </div>
+  </div>
+  
+<% end %>
+
+
+
+<% end %>
