@@ -2,7 +2,6 @@ class CreateScribblers < ActiveRecord::Migration
   def change
     create_table :scribbler_containers, :force => true do |t|
       t.string      :name
-      t.string      :description
       t.boolean     :scaleable, :default => false
       t.integer     :element_id
       t.timestamps

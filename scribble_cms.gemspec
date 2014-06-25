@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "scribble_cms"
-  s.version     = "0.0.13a"
+  s.version     = "0.0.14a"
   s.authors     = ["Florian Eck"]
   s.email       = ["it-support@friends-systems.de"]
   s.homepage    = "http://www.friends-systems.de"

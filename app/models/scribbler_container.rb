@@ -32,6 +32,9 @@ class ScribblerContainer < ActiveRecord::Base
     ScribblerGroup.where(:name => name, :container_id => self.id).first || ScribblerGroup.create(:name => name, :container_id => self.id)
   end  
   
+  def description
+    I18n.t(self.name, :scope => "scribbler.container_names")
+  end  
   
     
   

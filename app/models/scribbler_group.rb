@@ -98,7 +98,7 @@ class ScribblerGroup < ActiveRecord::Base
       self.process_data!(data[:released])
       
       # Update unrealesed data
-      self.process_data!(data[:unreleased])
+      self.process_data!(data[:unreleased]) if data[:unreleased]
     end 
     
     def process_data!(data)
@@ -114,6 +114,10 @@ class ScribblerGroup < ActiveRecord::Base
         end  
       end  
     end
+    
+    def human_name
+      I18n.t(self.name, :scope => "scribbler.group_names")
+    end  
     
     
        

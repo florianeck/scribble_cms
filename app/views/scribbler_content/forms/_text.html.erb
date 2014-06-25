@@ -1,5 +1,4 @@
 <%= f.fields_for "#{element.element_type}_#{element.id}" do |e| %>
-  <%= e.label :content, element.name %>
   <%= e.text_area :content, :class => "tinymce", :value => element.content %>
   <br />
   <%= e.hidden_field :type, :value => element.element_type %>

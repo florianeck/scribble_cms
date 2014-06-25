@@ -6,41 +6,47 @@
       auf Seite <i>'<%= @group.container.element.page.name %>'</i>
     <% end %>
   </p>
-  
-  <%= form_for @group, :url => scribbler.url_for({:action => "group_update", :id => @group.id}), :html => {:class => "section", :method => :post} do |f| %>
-  <table style="min-width: 940px;" cellspacing="5">
+  <%= form_for @group, :url => {:action => "group_update", :id => @group.id}, :html => {:class => "section", :method => :post} do |f| %>
+  <table id="scribbler-group-edit-table" cellspacing="5">
+    <% if !controller.hide_scribbler_edit_status %>
     <tr>
       <td>
         <b><%= link_to_function("Aktueller Zustand", "toggleCol('released')") %></b><br />
         <i>Klicken um Bereich ein- bzw auszublenden</i>
       </td>
+      
       <td>
         <b><%= link_to_function("In Bearbeitung", "toggleCol('unreleased')") %></b><br />
         <i>Klicken um Bereich ein- bzw auszublenden</i>
       </td>
     </tr>
+    <% end %>
     <tr>
       <td id="released" class="">
         <%= f.fields_for :released do |u| %>
             <% @group.released_elements.each do |e| %>
+              <h3 class="scribbler-header"><%= e.human_name %></h3>
               <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
             <% end %>
         <% end %>
       </td>
-      <td id="unreleased" class="">
-        <%= f.fields_for :unreleased do |u| %>
-            <% @group.unreleased_elements.each do |e| %>
-              <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
-            <% end %>
-        <% end %>
-      </td>
+      <% if !controller.hide_scribbler_edit_status %>
+        <td id="unreleased" class="">
+          <%= f.fields_for :unreleased do |u| %>
+              <% @group.unreleased_elements.each do |e| %>
+                <h3 class="scribbler-header"><%= e.human_name %></h3>
+                <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
+              <% end %>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   </table>
   
   <%= f.submit "Änderungen speichern" %>
   
   <% if @group.container.scaleable %>
-    <%= link_to "Dieses Element löschen", scribbler.url_for({:action => "group_destroy", :id => @group.id}), 
+    <%= link_to "Dieses Element löschen", {:action => "group_destroy", :id => @group.id}, 
       :confirm => "Soll dieses Element gelöscht werden? Dies kann nicht rückgängig gemacht werden.", :class => "icon-minus" %>
   <% end %>  
   

@@ -23,7 +23,11 @@ module ScribbleCms
       elsif self.is_a?(ScribblerImage)  
         return :image
       end  
-    end     
+    end
+    
+    def human_name
+      I18n.t(self.name, :scope => "scribbler.element_names.#{self.group.name}")
+    end       
     
   end
 end  

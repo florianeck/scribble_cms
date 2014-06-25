@@ -1,11 +1,10 @@
 <ul>
   <% ScribblerContainer.all.each do |container| %>
-    <li class="scribbler-group">
-      <%= link_to container.description, scribbler.url_for({:controller => "/scribbler_admin", :action => "container_edit", :id => container.id}) %><br />
-      <div class="metainfo small"><%= container.name %></div>
-      <ul class="">
+    <li class="scribbler-group" data-scribbler-container-id="<%= container.id %>">
+      <%= container.description %><br />
+      <ul class="" data-scribbler-container-id="<%= container.id %>">
         <% container.groups.each do |group| %>
-          <li><%= link_to group.name, scribbler.url_for({:controller => "/scribbler_admin", :action => "group_edit", :id => group.id}), default_ajax_link(:update => "scribbler-edit-area")  %></li>
+          <li><%= link_to_unless_current group.human_name, {:action => "group_edit", :id => group.id}  %></li>
         <% end %>
       </ul>
     </li>
