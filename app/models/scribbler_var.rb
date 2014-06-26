@@ -13,7 +13,7 @@ class ScribblerVar < ActiveRecord::Base
   
       #== Konstanten
       VAR_TYPES = {
-        :decimal => 
+        :decimal => ""
       }
   
       #== Validation and Callbacks
