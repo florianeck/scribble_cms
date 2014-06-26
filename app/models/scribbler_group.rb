@@ -30,11 +30,11 @@ class ScribblerGroup < ActiveRecord::Base
     # => END
     
     # Display data
-    def row(row_name)
+    def row(row_name, options = {})
       get_element(:row, row_name).content
     end
     
-    def text(text_name)
+    def text(text_name, options = {})
       get_element(:text, text_name).content.to_s.html_safe
     end  
     
@@ -44,11 +44,16 @@ class ScribblerGroup < ActiveRecord::Base
       ActionController::Base.helpers.link_to(link.title, link.url, options)
     end
     
-    def image(image_name, size)
-      get_element(:image, image_name, :opt_size => size).image.url(:default)
+    def image(image_name, options = {})
+      e = get_element(:image, image_name, :opt_size => options[:size])
+      if e.image
+        e.image.url
+      else
+        ""
+      end    
     end
     
-    def var(name, var_type)
+    def var(name, options = {})
       get_element :var, name
     end  
     

@@ -17,8 +17,8 @@ module ScribblerContentHelper
   end
   
   def scribbler_element(container, group, type, name, options = {})
-    scribbler_group(container, group) do |g|
-      v = g.send(type, name)
+    scribbler_group(container.to_s, group.to_s) do |g|
+      v = g.send(type.to_s, name.to_s, options)
       if v.blank? && options[:default]
         options[:default]
       else  

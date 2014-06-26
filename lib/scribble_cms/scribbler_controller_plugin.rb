@@ -50,6 +50,7 @@ module ScribbleCms
   
       # Groups
       def group_edit
+        @containers = ScribblerContainer.all
         render "/scribbler_admin/group_edit"
       end
   
@@ -75,7 +76,12 @@ module ScribbleCms
         @element.update_attributes(image_params)
         @element.image.reprocess!
         redirect_to :action => "group_edit", :id => @element.group_id
-      end    
+      end
+      
+      
+      def picture
+        
+      end      
   
       # Private - permit parameters
       private

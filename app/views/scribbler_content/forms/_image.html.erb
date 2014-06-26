@@ -6,8 +6,7 @@
   <%= e.file_field :image %>
   
   
-  <p>Klicken Sie auf das Bild um die Abmessungen anzupassen</p>
-  <%= link_to image_tag(element.image.url(:default), :width => "100%"), {:action => "image_cropper", :id => element.id} %>
+  <%= image_tag element.image.url if element.image_stored? %>
   
   <div style="margin-bottom: 5px;">
     <%= e.label :copyright, "Copyright" %><br />

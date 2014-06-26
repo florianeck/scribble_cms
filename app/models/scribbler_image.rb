@@ -1,10 +1,20 @@
 class ScribblerImage < ActiveRecord::Base
   
   #= Configuration
-  has_attached_file :image, :styles => {:default => "300x200"}, :processors => [:cropper]
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  dragonfly_accessor :image, app: :scribbler do
+    
+  end
+
+  #validates_presence_of :image
+  validates_size_of :image, maximum: 2.megabytes
+  validates_property :format,
+    of: :image,
+    in: [:gif, :png, :jpg, :jpeg],
+    case_sensitive: false,
+    message: I18n.t("not a valid image")
+    
+    
   
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
       #== Associations
       
       #== Plugins and modules
@@ -28,20 +38,5 @@ class ScribblerImage < ActiveRecord::Base
     # => END
     
     
-    def cropping?
-      !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
-    end
     
-    def crop_image
-      self.image.reprocess!
-      crop_x = crop_y = crop_w = crop_h = nil
-    end
-    
-    def opt_image_width
-      self.opt_size.split("x").first
-    end
-    
-    def opt_image_height
-      self.opt_size.split("x").last
-    end  
 end

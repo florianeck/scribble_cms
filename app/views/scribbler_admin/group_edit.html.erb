@@ -56,6 +56,7 @@
 
 <%= tinymce %>
 
+<% if !controller.hide_scribbler_edit_status %>
 <script type="text/javascript">
   
 toggleCol = function(name){
@@ -72,3 +73,4 @@ toggleCol = function(name){
 toggleCol('released')  
 </script>
 
+<% end %>

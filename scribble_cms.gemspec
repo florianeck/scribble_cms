@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'friendly_extensions', '>= 0.0.66'
   s.add_runtime_dependency 'friends_ajax_core'
-  s.add_runtime_dependency 'paperclip', '>= 2.1.0'
+  s.add_runtime_dependency 'dragonfly'
 end
