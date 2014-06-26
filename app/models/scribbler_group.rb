@@ -16,7 +16,8 @@ class ScribblerGroup < ActiveRecord::Base
       ELEMENTS = {:row => ScribblerText, 
                   :text => ScribblerText,
                   :link => ScribblerLink,
-                  :image => ScribblerImage}
+                  :image => ScribblerImage,
+                  :var => ScribblerVar}
   
       #== Validation and Callbacks
         #=== Validation
@@ -46,6 +47,12 @@ class ScribblerGroup < ActiveRecord::Base
     def image(image_name, size)
       get_element(:image, image_name, :opt_size => size).image.url(:default)
     end
+    
+    def var(name, var_type)
+      get_element :var, name
+    end  
+    
+    
     
     # Helpers
     def get_element(type, name, options = {:released => true})

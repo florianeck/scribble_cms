@@ -33,6 +33,15 @@ class CreateScribblers < ActiveRecord::Migration
       t.timestamps
     end
     
+    create_table :scribbler_vars, :force => true do |t|
+      t.string :name
+      t.text :content
+      t.string :var_type
+      t.integer :group_id
+      t.boolean :released, :default => false
+      t.timestamps
+    end
+    
     create_table :scribbler_images, :force => true do |t|
       t.string :name
       t.string :group_id

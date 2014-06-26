@@ -22,6 +22,8 @@ module ScribbleCms
         return :text
       elsif self.is_a?(ScribblerImage)  
         return :image
+      elsif self.is_a?(ScribblerVar)
+        return :var  
       end  
     end
     
