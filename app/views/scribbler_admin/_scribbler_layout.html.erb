@@ -1,6 +1,10 @@
 <div id="scribbler-admin-area" class="cf">
-  <div id="scribbler-sidebar">
-    <%= render :partial => "/scribbler_admin/scribbler_sidebar" unless request.xhr? %>
-  </div>
-  <div id="scribbler-edit-area"><%= content %></div>
+  <% if @containers.empty? %>
+    <span class="metainfo">Es liegen keine Inhalte vor, die bearbeitet werden können</span>
+  <% else %>
+    <div id="scribbler-sidebar">
+      <%= render :partial => "/scribbler_admin/scribbler_sidebar" unless request.xhr? %>
+    </div>
+    <div id="scribbler-edit-area"><%= content %></div>
+  <% end %>  
 </div>
