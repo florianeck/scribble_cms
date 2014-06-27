@@ -31,11 +31,19 @@ class ScribblerGroup < ActiveRecord::Base
     
     # Display data
     def row(row_name, options = {})
-      get_element(:row, row_name).content
+      e = get_element(:row, row_name)
+      if e.content.blank? && options[:default]
+        e.update_attributes(:content => options[:default])
+      end
+      return e.content.html_safe
     end
     
     def text(text_name, options = {})
-      get_element(:text, text_name).content.to_s.html_safe
+      e = get_element(:text, text_name)
+      if e.content.blank? && options[:default]
+        e.update_attributes(:content => options[:default])
+      end
+      return e.content.html_safe
     end  
     
     def link(link_name, options = {})
@@ -45,7 +53,7 @@ class ScribblerGroup < ActiveRecord::Base
     end
     
     def image(image_name, options = {})
-      e = get_element(:image, image_name, :opt_size => options[:size])
+      e = get_element(:image, image_name, options)
       if e.image
         e.image.url
       else

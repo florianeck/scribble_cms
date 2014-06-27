@@ -2,7 +2,12 @@ class ScribblerImage < ActiveRecord::Base
   
   #= Configuration
   dragonfly_accessor :image, app: :scribbler do
-    
+    after_assign{|i| i.name = sanitize_filename(image.name) }
+  end
+
+
+  def sanitize_filename(filename)
+    [filename.split(".").first.parameterize, filename.split(".").last].join(".")
   end
 
   #validates_presence_of :image

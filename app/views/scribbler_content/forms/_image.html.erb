@@ -7,7 +7,6 @@
   
   
   <%= image_tag element.image.url if element.image_stored? %>
-  
   <div style="margin-bottom: 5px;">
     <%= e.label :copyright, "Copyright" %><br />
     <%= e.text_field :copyright, :value => element.copyright %>
