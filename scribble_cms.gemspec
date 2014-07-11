@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"]
 
   s.add_runtime_dependency 'friendly_extensions', '>= 0.0.66'
-  s.add_runtime_dependency 'friends_ajax_core'
+  s.add_runtime_dependency 'jqajax_core2'
   s.add_runtime_dependency 'dragonfly'
 end

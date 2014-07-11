@@ -6,7 +6,7 @@
   <%= e.file_field :image %>
   
   
-  <%= image_tag element.image.url if element.image_stored? %>
+  <div><%= image_tag element.image.url if element.image_stored? %></div>
   <div style="margin-bottom: 5px;">
     <%= e.label :copyright, "Copyright" %><br />
     <%= e.text_field :copyright, :value => element.copyright %>
