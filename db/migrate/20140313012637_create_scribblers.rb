@@ -49,8 +49,8 @@ class CreateScribblers < ActiveRecord::Migration
       t.string :copyright
       t.string :alt_text
       t.string :opt_size, :default => "128x128"
-      t.string, :image_uid, 
-      t.string, :image_name,
+      t.string :image_uid 
+      t.string :image_name
       t.timestamps
     end
   end
