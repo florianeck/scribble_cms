@@ -16,7 +16,12 @@ module ScribblerContentHelper
     end  
   end
   
-  def scribbler_element(container, group, type, name, options = {})
+  def scribbler_element(container, group, type, name, options = {}, &block)
+    
+    if block_given?
+      options[:default] = capture(&block).html_safe
+    end  
+    
     scribbler_group(container.to_s, group.to_s) do |g|
       v = g.send(type.to_s, name.to_s, options)
       if v.blank? && options[:default]
