@@ -29,7 +29,12 @@ module ScribbleCms
     
     def human_name
       I18n.t(self.name, :scope => "scribbler.element_names.#{self.group.name}")
-    end       
+    end     
+    
+    def hint  
+      h = I18n.t(self.name, :scope => "scribbler.element_hints.#{self.group.name}", :default => "")
+      h.is_a?(Array) ? h.join("") : h
+    end  
     
   end
 end  
