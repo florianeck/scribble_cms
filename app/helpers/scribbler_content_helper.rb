@@ -17,7 +17,6 @@ module ScribblerContentHelper
   end
   
   def scribbler_element(container, group, type, name, options = {}, &block)
-    
     if block_given?
       options[:default] = capture(&block).html_safe
     end  
@@ -29,7 +28,6 @@ module ScribblerContentHelper
       else  
         return v
       end  
-      
     end
   end  
   
