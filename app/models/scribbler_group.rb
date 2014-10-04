@@ -35,7 +35,7 @@ class ScribblerGroup < ActiveRecord::Base
       if e.content.blank? && options[:default]
         e.update_attributes(:content => options[:default])
       end
-      return e.content.html_safe
+      return e.content.to_s.html_safe
     end
     
     def text(text_name, options = {})
@@ -97,7 +97,7 @@ class ScribblerGroup < ActiveRecord::Base
     end  
     
     def elements(options = {:released => true})
-      ELEMENTS.values.uniq.map {|c| c.where(:group_id => self.id, :released => options[:released] == true)}.flatten.sort_by {|e| e.created_at}
+      ELEMENTS.values.uniq.map {|c| c.where(:group_id => self.id, :released => options[:released] == true)}.flatten.sort_by {|e| e.name}
     end
     
     def released_elements

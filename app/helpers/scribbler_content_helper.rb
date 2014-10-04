@@ -18,7 +18,7 @@ module ScribblerContentHelper
   
   def scribbler_element(container, group, type, name, options = {}, &block)
     if block_given?
-      options[:default] = capture(&block).html_safe
+      options[:default] = capture(&block).html_safe.strip.force_encoding("UTF-8")
     end  
     
     scribbler_group(container.to_s, group.to_s) do |g|
