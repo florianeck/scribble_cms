@@ -12,7 +12,8 @@ String.class_eval do
   def replace_scribbler_vars(vars = {})
     r = self
     vars.each do |var_name, var_content|
-      r = r.gsub("*#{var_name}*", var_content)
+      r = r.gsub("*#{var_name}*", var_content.to_s
+      )
     end
     return r  
   end  
