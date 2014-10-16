@@ -51,7 +51,7 @@
 
 <% end %>
 
-<%= tinymce %>
+<%= javascript_tag("Alchemy.Tinymce.initAll();") %>
 
 <% if !controller.hide_scribbler_edit_status %>
 <script type="text/javascript">
@@ -68,6 +68,8 @@ toggleCol = function(name){
 }
   
 toggleCol('released')  
+
+  
 </script>
 
 <% end %>
