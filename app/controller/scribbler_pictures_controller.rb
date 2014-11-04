@@ -1,5 +1,7 @@
 class ScribblerPicturesController < ApplicationController
   
+  skip_before_filter :main_app_default_before_filter
+  
   def show
     img = ScribblerImage.find_by_image_name("#{params[:name]}.#{params[:format]}")  
     
