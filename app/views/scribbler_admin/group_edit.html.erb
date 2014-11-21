@@ -1,3 +1,4 @@
+<% element_ids = [] %>
 <%= scribbler_layout do %>
   
   <%= form_for @group, :url => {:action => "group_update", :id => @group.id}, :html => {:class => "section", :method => :post} do |f| %>
@@ -15,6 +16,7 @@
       </td>
     </tr>
     <% end %>
+    
     <tr>
       <td id="released" class="">
         <%= f.fields_for :released do |u| %>
@@ -23,6 +25,7 @@
               <% unless e.hint.blank? %>
                 <p class="scribbler-element-hint"><%= raw(e.hint) %></p>
               <% end %>
+              <% element_ids << e.id %>
               <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
             <% end %>
         <% end %>
@@ -51,25 +54,12 @@
 
 <% end %>
 
-<%= javascript_tag(ScribbleCms.tiny_mce_js) %>
-
-<% if !controller.hide_scribbler_edit_status %>
 <script type="text/javascript">
-  
-toggleCol = function(name){
-  col = $("#"+name)
-  if(col.hasClass("col-visible")){
-    $("#"+name+" *").hide();
-    col.removeClass("col-visible")
-  }else{
-     $("#"+name+" *").show();
-     col.addClass("col-visible")
-  }
-}
-  
-toggleCol('released')  
-
-  
+  f = "Alchemy.Tinymce.init(<%= element_ids %>)"
+  window.setTimeout(f, 250)
 </script>
 
-<% end %>
+
+
+
+
