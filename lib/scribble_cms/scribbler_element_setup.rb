@@ -5,6 +5,12 @@ module ScribbleCms
       base.send(:belongs_to, :group, :class_name => "ScribblerGroup", :foreign_key => "group_id", :touch => true)
       base.send(:validates_presence_of, :group_id)
       base.send(:before_save, :check_uniqueness)
+      base.send(:smart_search, :on => [
+          {:field_name => :human_name, :boost => 0.7}, {:field_name => "group.human_name", :boost => 0.5}, {:field_name => :searchable_content, :boost => 1}
+        ],
+        :conditions => "released = 1"
+      )
+      
     end
     
     
@@ -26,6 +32,19 @@ module ScribbleCms
         return :var  
       end  
     end
+    
+    def searchable_content
+      case self.element_type
+      when :link
+        return [name, url, title]
+      when :row
+        return content
+      when :text
+        return content
+      when :image
+      when :var
+      end        
+    end  
     
     def human_name
       I18n.t(self.name, :scope => "scribbler.element_names.#{self.group.name}")
