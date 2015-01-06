@@ -25,8 +25,7 @@ class ScribblerGroup < ActiveRecord::Base
           
         #=== Callbacks
         after_destroy :destroy_elements
-          
-          
+         
     # => END
     
     # Display data

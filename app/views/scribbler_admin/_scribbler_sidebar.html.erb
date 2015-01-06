@@ -1,4 +1,10 @@
 <ul data-no-turbolink>
+  <li>
+    <%= form_for :scribbler, :url => alchemy.admin_static_content_search_url, :html => {:method => :get} do |f| %>
+      <%= f.labeled_text_field :query, :label => "Suchbegriff" %>
+      <%= f.submit "Suchen" %>
+    <% end %>
+  </li>
   <% ScribblerContainer.all.each do |container| %>
     <li class="scribbler-group" data-scribbler-container-id="<%= container.id %>">
       <%= container.description %><br />

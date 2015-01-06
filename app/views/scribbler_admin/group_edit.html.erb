@@ -21,12 +21,14 @@
       <td id="released" class="">
         <%= f.fields_for :released do |u| %>
             <% @group.released_elements.each do |e| %>
-              <h3 class="scribbler-header"><%= e.human_name %></h3>
-              <% unless e.hint.blank? %>
-                <p class="scribbler-element-hint"><%= raw(e.hint) %></p>
-              <% end %>
-              <% element_ids << e.id %>
-              <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
+              <div style="<%= 'background-color: #ffffdc;' if params[:active].to_i == e.id %> padding: 5px;">
+                <h3 class="scribbler-header"><%= e.human_name %></h3>
+                <% unless e.hint.blank? %>
+                  <p class="scribbler-element-hint"><%= raw(e.hint) %></p>
+                <% end %>
+                <% element_ids << e.id %>
+                <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
+              </div>  
             <% end %>
         <% end %>
       </td>

@@ -10,7 +10,7 @@ module ScribbleCms
       def scribbler_cms_controller(options = {})
         
         self.send(:include, InstanceMethods)
-        self.send :before_filter, :get_container, :only => %w(container_edit container_update container_add_item )
+        self.send :before_filter, :get_container, :only => %w(container_edit container_update container_add_item)
         self.send :before_filter, :get_group, :only => %w(group_edit group_update group_destroy)
         self.cattr_accessor :hide_scribbler_edit_status
         
@@ -45,6 +45,12 @@ module ScribbleCms
         @container.get_group("#{@container.id}-#{Time.now.to_i}")
         flash[:notice] = "Neues Element für #{@container.name} wurde angelegt"
         redirect_to :back
+      end  
+      
+      def search
+        @containers = ScribblerContainer.all
+        @items = ScribblerText.find_by_tags(params[:scribbler][:query])
+         render "/scribbler_admin/search"
       end  
   
   
@@ -83,6 +89,7 @@ module ScribbleCms
         
       end      
   
+   
       # Private - permit parameters
       private
   

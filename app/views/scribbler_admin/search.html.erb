@@ -1,0 +1,20 @@
+<%= scribbler_layout do %>
+  <h1>Suchergebnisse für '<%= params[:scribbler][:query] %>'</h1>
+  
+  <table class="list">
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to :action => "group_edit", :id => item.group.id, :active => item.id do %>
+           <h2> <b><%= item.human_name %></b> - <%= item.group.human_name %></h2>
+          <% end %>  
+          
+          
+          <%= item.content.html_safe %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  
+  
+<% end %>
