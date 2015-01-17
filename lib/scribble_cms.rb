@@ -4,7 +4,7 @@ require "scribble_cms/engine"
 require 'scribble_cms/scribbler_controller_plugin'  
 require 'scribble_cms/scribbler_element_setup'
 require 'dragonfly'
-
+require "smart_search"
 
 module ScribbleCms
   mattr_accessor :tiny_mce_css, :tiny_mce_js
