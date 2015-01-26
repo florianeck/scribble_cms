@@ -47,7 +47,7 @@ module ScribbleCms
     end  
     
     def human_name
-      I18n.t(self.name, :scope => "scribbler.element_names.#{self.group.name}")
+      I18n.t(self.name, :scope => "scribbler.element_names.#{self.group.name}", :default => self.name.humanize)
     end     
     
     def hint  

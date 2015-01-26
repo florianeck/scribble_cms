@@ -33,7 +33,7 @@ class ScribblerContainer < ActiveRecord::Base
   end  
   
   def description
-    I18n.t(self.name, :scope => "scribbler.container_names")
+    I18n.t(self.name, :scope => "scribbler.container_names", :default => self.name.humanize)
   end  
   
     

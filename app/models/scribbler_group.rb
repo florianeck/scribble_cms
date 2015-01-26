@@ -135,7 +135,7 @@ class ScribblerGroup < ActiveRecord::Base
     end
     
     def human_name
-      I18n.t(self.name, :scope => "scribbler.group_names")
+      I18n.t(self.name, :scope => "scribbler.group_names", :default => self.name.humanize)
     end  
     
     
