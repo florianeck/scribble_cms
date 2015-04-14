@@ -21,7 +21,7 @@
       <td id="released" class="">
         <%= f.fields_for :released do |u| %>
             <% @group.released_elements.each do |e| %>
-              <div style="<%= 'background-color: #ffffdc;' if params[:active].to_i == e.id %> padding: 5px;">
+              <div class="scribbler-element scribbler-<%= e.element_type %>" style="<%= 'background-color: #ffffdc;' if params[:active].to_i == e.id %> padding: 5px;">
                 <h3 class="scribbler-header"><%= e.human_name %></h3>
                 <% unless e.hint.blank? %>
                   <p class="scribbler-element-hint"><%= raw(e.hint) %></p>

@@ -2,19 +2,19 @@
  
   
   
-  <%= e.label :image, "Bilddatei" %><br />
-  <%= e.file_field :image %>
   
   
-  <div><%= image_tag element.image.url if element.image_stored? %></div>
+  
+  <div class="image-container">
+    <%= image_tag element.image.url if element.image_stored? %>
+    <%= e.label :image, "Bilddatei" %> <div class="input"><%= e.file_field :image %></div>
+  </div>
   <div style="margin-bottom: 5px;">
-    <%= e.label :copyright, "Copyright" %><br />
-    <%= e.text_field :copyright, :value => element.copyright %>
+    <%= e.label :copyright, "Copyright" %> <div class="input"><%= e.text_field :copyright, :value => element.copyright %></div>
   </div>
 
   <div style="margin-bottom: 5px;">
-    <%= e.label :alt_text, "ALT-Attribut" %><br />
-    <%= e.text_field :alt_text, :value => element.alt_text %>
+    <%= e.label :alt_text, "ALT-Attribut" %> <div class="input"><%= e.text_field :alt_text, :value => element.alt_text %></div>
   </div>  
 
   <%= e.hidden_field :type, :value => element.element_type %>
