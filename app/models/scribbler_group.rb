@@ -42,7 +42,7 @@ class ScribblerGroup < ActiveRecord::Base
       if e.content.blank? && options[:default]
         e.update_attributes(:content => options[:default])
       end
-      return e.content.html_safe
+      return e.content.to_s.html_safe
     end  
     
     def link(link_name, options = {})
