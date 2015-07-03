@@ -5,13 +5,13 @@ module ScribblerContentHelper
     q = {:name => container_name, :scaleable => (options[:scaleable].nil? ? false : options[:scaleable]), :element_id => (options[:element] ? options[:element].id : nil)}
     container = ScribblerContainer.where(:name => container_name).first || ScribblerContainer.create(q)
     container.update_attributes(:scaleable => options[:scaleable]) if options[:scaleable] && container.scaleable != options[:scaleable]
-    capture(container, &block)
+    yield(container)
   end
   
   def scribbler_group(container, group, &block)
     scribbler_container(container) do |c|
       c.scribbler_group(group) do |g|
-        capture(g, &block)
+        yield(g)
       end  
     end  
   end
@@ -29,16 +29,6 @@ module ScribblerContentHelper
         return v
       end  
     end
-  end  
-  
-  # Form
-  def scribbler_form_element(element,form)
-    render :partial => "/scribbler_content/forms/#{element.element_type}", :locals => {:element => element, :f => form} 
-  end    
-  
-  
-  def scribbler_layout(&block)
-    render :partial => "/scribbler_admin/scribbler_layout", :locals => {:content => capture(&block)}
   end  
   
 end  
