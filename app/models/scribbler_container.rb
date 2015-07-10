@@ -23,6 +23,10 @@ class ScribblerContainer < ActiveRecord::Base
           
           
     # => END
+  
+    def ordered_groups
+      self.groups.sort_by {|g| g.human_name.to_s }
+    end  
     
   def scribbler_group(name, &block)
     yield(self.get_group(name))

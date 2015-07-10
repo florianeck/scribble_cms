@@ -9,7 +9,7 @@
     <li class="scribbler-group" data-scribbler-container-id="<%= container.id %>">
       <%= container.description %><br />
       <ul class="" data-scribbler-container-id="<%= container.id %>">
-        <% container.groups.each do |group| %>
+        <% container.ordered_groups.each do |group| %>
           <li><%= link_to_unless_current group.human_name, {:action => "group_edit", :id => group.id}  %></li>
         <% end %>
       </ul>
