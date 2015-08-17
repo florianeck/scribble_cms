@@ -10,7 +10,7 @@
           <% end %>  
           
           
-          <%= item.content.html_safe %>
+          <%= item.content.to_s.html_safe %>
         </td>
       </tr>
     <% end %>
