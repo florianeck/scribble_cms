@@ -64,6 +64,14 @@ class ScribblerGroup < ActiveRecord::Base
       get_element :var, name
     end  
     
+    def clone!(new_name)
+      group = self.class.new(:name => new_name, :container_id => self.container_id)
+      if group.save
+        self.elements.each do |el|
+          el.class.create(el.attributes.except("id").merge(:group_id => group.id))
+        end  
+      end  
+    end  
     
     
     # Helpers
