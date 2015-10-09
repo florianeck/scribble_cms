@@ -1,5 +1,3 @@
-
-
 require "scribble_cms/engine"
 require 'scribble_cms/scribbler_controller_plugin'  
 require 'scribble_cms/scribbler_element_setup'
@@ -20,6 +18,7 @@ String.class_eval do
   def replace_scribbler_vars(vars = {})
     r = self
     vars.each do |var_name, var_content|
+      puts ["*#{var_name}*", var_content ].inspect
       r = r.gsub("*#{var_name}*", var_content.to_s
       )
     end
