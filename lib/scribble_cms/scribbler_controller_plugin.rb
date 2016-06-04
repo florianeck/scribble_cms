@@ -61,7 +61,7 @@ module ScribbleCms
       end
 
       def group_update
-        @group.process_group_data(params[:scribbler_group].to_hash)
+        @group.process_group_data(params.require(:scribbler_group).permit!)
         flash[:notice] = "Änderungen wurden gespeichert"
         redirect_to :back
       end
