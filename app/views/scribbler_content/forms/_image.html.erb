@@ -1,10 +1,4 @@
 <%= f.fields_for "#{element.element_type}_#{element.id}" do |e| %>
- 
-  
-  
-  
-  
-  
   <div class="image-container">
     <%= image_tag element.image.url if element.image_stored? %>
     <%= e.label :image, "Bilddatei" %> <div class="input"><%= e.file_field :image %></div>
@@ -15,7 +9,7 @@
 
   <div style="margin-bottom: 5px;">
     <%= e.label :alt_text, "ALT-Attribut" %> <div class="input"><%= e.text_field :alt_text, :value => element.alt_text %></div>
-  </div>  
+  </div>
 
   <%= e.hidden_field :type, :value => element.element_type %>
   <%= e.hidden_field :id, :value => element.id %>
