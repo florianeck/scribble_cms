@@ -1,0 +1,4 @@
+| Version | Date       | Details                                                                                                                                                                       |
+|---------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0.6     | 2016-07-23 | Updated Gem Informations (E-Mail, Website), allow default labels for element names (no need to create a locale entry for every repetitive element name), added CHANGELOG file |
+|         |            |                                                                                                                                                                               |

@@ -1,6 +1,6 @@
 <% element_ids = [] %>
 <%= scribbler_layout do %>
-  
+
   <%= form_for @group, :url => {:action => "group_update", :id => @group.id}, :html => {:class => "section", :method => :post} do |f| %>
   <table id="scribbler-group-edit-table" cellspacing="5">
     <% if !controller.hide_scribbler_edit_status %>
@@ -9,14 +9,14 @@
         <b><%= link_to_function("Aktueller Zustand", "toggleCol('released')") %></b><br />
         <i>Klicken um Bereich ein- bzw auszublenden</i>
       </td>
-      
+
       <td>
         <b><%= link_to_function("In Bearbeitung", "toggleCol('unreleased')") %></b><br />
         <i>Klicken um Bereich ein- bzw auszublenden</i>
       </td>
     </tr>
     <% end %>
-    
+
     <tr>
       <td id="released" class="">
         <%= f.fields_for :released do |u| %>
@@ -28,7 +28,7 @@
                 <% end %>
                 <% element_ids << e.id %>
                 <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
-              </div>  
+              </div>
             <% end %>
         <% end %>
       </td>
@@ -44,14 +44,14 @@
       <% end %>
     </tr>
   </table>
-  
+
   <%= f.submit "Änderungen speichern" %>
-  
+
   <% if @group.container.scaleable %>
-    <%= link_to "Dieses Element löschen", {:action => "group_destroy", :id => @group.id}, 
+    <%= link_to "Dieses Element löschen", {:action => "group_destroy", :id => @group.id},
       :confirm => "Soll dieses Element gelöscht werden? Dies kann nicht rückgängig gemacht werden.", :class => "icon-minus" %>
-  <% end %>  
-  
+  <% end %>
+
   <% end %>
 
 <% end %>

@@ -47,7 +47,13 @@ module ScribbleCms
     end
 
     def human_name
-      I18n.t(self.name, :scope => "scribbler.element_names.#{self.group.name}", :default => self.name.to_s.humanize)
+      s = "scribbler.element_names.#{self.group.name}.#{self.name}"
+
+      if I18n.exists?(s)
+        I18n.t(s)
+      else
+        I18n.t(self.name, scope: "scribbler.element_names_default")
+      end
     end
 
     def hint

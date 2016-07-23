@@ -1,0 +1,9 @@
+de:
+  scribbler:
+    element_names_default:
+      subject: Betreff
+      text: Text/Inhalt
+      subject-en: 'EN: 1. Betreff'
+      content-en: 'EN: 2. Text/Inhalt'
+      subject-de: 'DE: 1. Betreff'
+      content-de: 'DE: 2. Text/Inhalt'
