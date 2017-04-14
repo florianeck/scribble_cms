@@ -13,11 +13,12 @@ class ScribblerGroup < ActiveRecord::Base
           # => Stuff in Here
 
       #== Konstanten
-      ELEMENTS = {:row => ScribblerText,
-                  :text => ScribblerText,
-                  :link => ScribblerLink,
-                  :image => ScribblerImage,
-                  :var => ScribblerVar}
+      ELEMENTS = {:row => "ScribblerText",
+                  :text => "ScribblerText",
+                  :link => "ScribblerLink",
+                  :image => "ScribblerImage",
+                  :var => "ScribblerVar"
+        }
 
       #== Validation and Callbacks
         #=== Validation
@@ -91,8 +92,10 @@ class ScribblerGroup < ActiveRecord::Base
 
       options.merge!(:name => name, :group_id => self.id)
 
-      element_class = ELEMENTS[type]
-
+      element_class = ELEMENTS[(type.is_a?(String) ? type.constantize : type)]
+      if element_class.is_a?(String)
+        element_class = element_class.constantize
+      end
       element = element_class.where(options).first
       if element.nil?
         element_class.create(options.merge(:released => !options[:released]))
@@ -104,7 +107,7 @@ class ScribblerGroup < ActiveRecord::Base
     end
 
     def elements(options = {:released => true})
-      ELEMENTS.values.uniq.map {|c| c.where(:group_id => self.id, :released => options[:released] == true)}.flatten.sort_by {|e| e.human_name}
+      ELEMENTS.values.map(&:constantize).uniq.map {|c| c.where(:group_id => self.id, :released => options[:released] == true)}.flatten.sort_by {|e| e.human_name}
     end
 
     def released_elements
