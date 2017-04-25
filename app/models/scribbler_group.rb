@@ -5,6 +5,7 @@ class ScribblerGroup < ActiveRecord::Base
       belongs_to :container, :class_name => "ScribblerContainer", :foreign_key => "container_id", :touch => true
 
       has_many :texts, :class_name => "ScribblerText", :foreign_key => "group_id"
+
       #== Plugins and modules
         #=== PlugIns
           # => Stuff in Here
@@ -28,6 +29,12 @@ class ScribblerGroup < ActiveRecord::Base
         after_destroy :destroy_elements
 
     # => END
+
+    def contents
+      contents = ELEMENTS.values.map do |cont_class|
+        cont_class.constantize.where(group_id: self.id).where(:released => true)
+      end.flatten
+    end
 
     # Display data
     def row(row_name, options = {})

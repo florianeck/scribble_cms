@@ -1,0 +1,21 @@
+- containers = ScribblerContainer.all
+%table
+  %thead
+    %tr
+      %tr
+        %th Group
+        %th Container
+        %th Element
+        %th ElementType
+  - containers.each do |container|
+    %tr
+      %td{:colspan => 4}= container.name
+    - container.groups.each do |group|
+      %tr
+        %td
+        %td{:colspan => 3}= group.name
+      - group.contents.each do |element|
+        %tr
+          %td
+          %td
+          %td= element.name
