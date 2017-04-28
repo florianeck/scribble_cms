@@ -1,5 +1,5 @@
 <%= f.fields_for "#{element.element_type}_#{element.id}" do |e| %>
-  <%= e.text_area :content, :class => ScribbleCms.tiny_mce_css, :id => "tinymce_#{element.id}", :value => element.content %>
+  <%= e.text_area :content, :class => ScribbleCms.tiny_mce_css, :value => element.content, class: 'html_editor' %>
   <br />
   <%= e.hidden_field :type, :value => element.element_type %>
   <%= e.hidden_field :id, :value => element.id %>

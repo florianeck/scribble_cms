@@ -5,7 +5,6 @@ class ScribblerImage < ActiveRecord::Base
     after_assign{|i| i.name = sanitize_filename(image.name) }
   end
 
-
   def sanitize_filename(filename)
     [filename.split(".").first.parameterize, filename.split(".").last].join(".")
   end
@@ -17,8 +16,6 @@ class ScribblerImage < ActiveRecord::Base
     in: [:gif, :png, :jpg, :jpeg],
     case_sensitive: false,
     message: I18n.t("not a valid image")
-
-
 
       #== Associations
 

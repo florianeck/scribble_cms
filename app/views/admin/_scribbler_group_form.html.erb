@@ -1,0 +1,18 @@
+<% element_ids = [] %>
+<%= form_for [:admin, resource] do |f| %>
+  <%= f.fields_for :group_data do |u| %>
+      <% f.object.released_elements.each do |e| %>
+        <div class="scribbler-element scribbler-<%= e.element_type %>" style="<%= 'background-color: #ffffdc;' if params[:active].to_i == e.id %> padding: 5px;">
+          <h3 class="scribbler-header"><%= e.human_name %></h3>
+          <% unless e.hint.blank? %>
+            <p class="scribbler-element-hint"><%= raw(e.hint) %></p>
+          <% end %>
+          <% element_ids << e.id %>
+          <div style="margin-bottom: 5px;"><%= scribbler_form_element(e,u) %></div>
+        </div>
+      <% end %>
+  <% end %>
+
+  <%= f.submit %>
+
+<% end %>

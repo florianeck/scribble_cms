@@ -7,3 +7,17 @@ de:
       content-en: 'EN: 2. Text/Inhalt'
       subject-de: 'DE: 1. Betreff'
       content-de: 'DE: 2. Text/Inhalt'
+      content: Text/Inhalt
+      title: Name
+      header: Überschrift
+      intro: Einleitung
+
+  activerecord:
+    models:
+      scribbler_group: Textbausteine
+      scribbler_container: Textgruppe
+    attributes:
+      scribbler_group:
+        human_name: Name
+        container_description: Textgruppe
+

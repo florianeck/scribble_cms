@@ -1,6 +1,7 @@
 class ScribblerGroup < ActiveRecord::Base
 
   #= Configuration
+  attr_accessor :group_data
       #== Associations
       belongs_to :container, :class_name => "ScribblerContainer", :foreign_key => "container_id", :touch => true
 
@@ -105,10 +106,8 @@ class ScribblerGroup < ActiveRecord::Base
       end
       element = element_class.where(options).first
       if element.nil?
-        element_class.create(options.merge(:released => !options[:released]))
         element = element_class.create(options)
       end
-
 
       return element
     end
@@ -129,6 +128,10 @@ class ScribblerGroup < ActiveRecord::Base
       self.elements.each {|e| e.destroy }
     end
 
+    def group_data=(data)
+      process_data!(data)
+    end
+
     # Save data
     def process_group_data(data = {})
       # Update realesed data
@@ -140,10 +143,11 @@ class ScribblerGroup < ActiveRecord::Base
 
     def process_data!(data)
       data.each do |key, content|
+        content.symbolize_keys!
         e_id    = content.delete(:id)
         e_type  = content.delete(:type)
         e_rel   = content.delete(:release)
-        element = ELEMENTS[e_type.to_sym].find(e_id)
+        element = ELEMENTS[e_type.to_sym].constantize.find(e_id)
         element.update_attributes(content)
 
         if e_rel == "1"
@@ -154,6 +158,10 @@ class ScribblerGroup < ActiveRecord::Base
 
     def human_name
       I18n.t(self.name, :scope => "scribbler.group_names", :default => self.name.humanize) rescue self.name
+    end
+
+    def container_description
+      container.description
     end
 
 
