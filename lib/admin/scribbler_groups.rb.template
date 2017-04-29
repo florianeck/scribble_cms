@@ -1,0 +1,32 @@
+ActiveAdmin.register ScribblerGroup do
+
+  controller do
+    define_method :permitted_params do
+      params.to_hash
+    end
+  end
+
+  index do
+    column :human_name
+    column :container_description
+    actions
+  end
+
+  show do
+    h3 scribbler_group.human_name
+    scribbler_group.released_elements.each do |element|
+      panel element.human_name do
+        case element.element_type
+        when :row, :text
+          div do
+            element.content.html_safe
+          end
+        when :image
+        end
+      end
+    end
+  end
+
+  form partial: 'admin/scribbler_group_form'
+
+end
