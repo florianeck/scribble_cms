@@ -559,7 +559,6 @@ div.mce-tinymce-inline {
 }
 
 .mce-floatpanel.mce-popover {
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
     background: transparent;
     top: 0;
     left: 0;
@@ -643,7 +642,6 @@ div.mce-fullscreen {
 }
 
 .mce-window {
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
     background: transparent;
     background: #FFF;
     position: fixed;
@@ -1516,13 +1514,11 @@ i.mce-i-checkbox {
 }
 
 .mce-colorpicker-overlay1 {
-    filter: progid: DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr='#ffffff', endColorstr='#00ffffff');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff', endColorstr='#00ffffff')";
     background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0))
 }
 
 .mce-colorpicker-overlay2 {
-    filter: progid: DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#00000000', endColorstr='#000000');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#00000000', endColorstr='#000000')";
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000)
 }
@@ -2081,7 +2077,6 @@ div.mce-menu .mce-menu-item b {
     position: absolute;
     left: 0;
     top: 0;
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
     background: transparent;
     z-index: 1000;
     padding: 5px 0 5px 0;
@@ -2330,14 +2325,14 @@ i.mce-i-resize {
 
 @font-face {
     font-family: 'tinymce';
-    src: url(asset_path('tinymce.eot')) format('embedded-opentype'), url(asset_path('tinymce.woff')) format('woff'), url(asset_path('tinymce.ttf')) format('truetype'), url(asset_path('tinymce.svg#tinymce') format('svg');
+    src: url(asset_path('tinymce.eot')) format('embedded-opentype'), url(asset_path('tinymce.woff')) format('woff'), url(asset_path('tinymce.ttf')) format('truetype'), url(asset_path('tinymce.svg#tinymce')) format('svg');
     font-weight: normal;
     font-style: normal
 }
 
 @font-face {
     font-family: 'tinymce-small';
-    src: url(asset_path('tinymce-small.eot')) format('embedded-opentype'), url(asset_path('tinymce-small.woff')) format('woff'), url(asset_path('tinymce-small.ttf')) format('truetype'), url(asset_path('tinymce-small.svg#tinymce') format('svg');
+    src: url(asset_path('tinymce-small.eot')) format('embedded-opentype'), url(asset_path('tinymce-small.woff')) format('woff'), url(asset_path('tinymce-small.ttf')) format('truetype'), url(asset_path('tinymce-small.svg#tinymce')) format('svg');
     font-weight: normal;
     font-style: normal
 }
