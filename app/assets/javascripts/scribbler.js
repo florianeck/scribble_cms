@@ -2,7 +2,8 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
   tinyMCE.init({
-     mode: 'textareas',
-     theme: 'modern'
+    mode: 'textareas',
+    theme: 'modern',
+    plugins: "code image link table",
    });
 });

@@ -16,8 +16,8 @@ module Scribbler
 
     if defined?(ActiveAdmin)
       initializer 'activeadmin.tinymce', :group => :all do |app|
-        js = ['ext/tinymce.min.js', 'scribbler.js', 'ext/themes/modern/theme.min.js']
-        css = ['ext/skins/lightgray/skin.min.css', 'ext/skins/lightgray/content.min.css']
+        js = ['ext/tinymce.min.js', 'scribbler.js']
+        css = ['ext/tinymce.skin.css', 'ext/tinymce.content.min.css']
 
         app.config.assets.precompile += js
         app.config.assets.precompile += css
