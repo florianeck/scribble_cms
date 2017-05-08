@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-$(document).ready(function() {
+
+window.initScribblerTinyMce = function(){
   tinyMCE.init({
     mode: 'textareas',
     theme: 'modern',
@@ -9,4 +10,8 @@ $(document).ready(function() {
     toolbar: "undo redo | styleselect | bold italic | link unlink image | alignleft aligncenter alignright | bullist numlist table | textcolor | code",
     valid_elements : '*[*]'
    });
+}
+
+$(document).ready(function() {
+  window.initScribblerTinyMce()
 });

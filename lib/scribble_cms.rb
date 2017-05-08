@@ -10,6 +10,15 @@ module ScribbleCms
 
   self.tiny_mce_css = "default_tinymce"
   self.tiny_mce_js  = "Alchemy.Tinymce.initAll();"
+
+  def self.js_files
+    ['ext/tinymce.min.js', 'scribbler.js']
+  end
+
+  def self.css_files
+    ['ext/tinymce.skin.css', 'ext/tinymce.content.min.css']
+  end
+
 end
 
 ActionController::Base.send(:include, ScribbleCms::ScribblerControllerPlugin)

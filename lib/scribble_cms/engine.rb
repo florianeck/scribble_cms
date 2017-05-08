@@ -1,6 +1,8 @@
 module Scribbler
   class Engine < Rails::Engine
 
+
+
     engine_name 'scribbler'
 
     initializer "dragonfly.scribbler" do
@@ -14,20 +16,19 @@ module Scribbler
       end
     end
 
-    if defined?(ActiveAdmin)
-      initializer 'activeadmin.tinymce', :group => :all do |app|
-        js = ['ext/tinymce.min.js', 'scribbler.js']
-        css = ['ext/tinymce.skin.css', 'ext/tinymce.content.min.css']
 
-        app.config.assets.precompile += js
-        app.config.assets.precompile += css
+    initializer 'activeadmin.tinymce', :group => :all do |app|
 
+      app.config.assets.precompile += ScribbleCms.js_files
+      app.config.assets.precompile += ScribbleCms.css_files
+
+      if defined?(ActiveAdmin)
         ActiveAdmin.application.tap do |config|
-          js.each do |j|
+          ScribbleCms.js_files.each do |j|
             config.register_javascript j
           end
 
-          css.each do |s|
+          ScribbleCms.css_files.each do |s|
             config.register_stylesheet s
           end
         end

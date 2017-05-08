@@ -143,7 +143,7 @@ class ScribblerGroup < ActiveRecord::Base
 
     def process_data!(data)
       data.each do |key, content|
-        content.symbolize_keys!
+        content.to_hash.symbolize_keys!
         e_id    = content.delete(:id)
         e_type  = content.delete(:type)
         e_rel   = content.delete(:release)
