@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"]
 
-  s.add_dependency 'friendly_extensions', '~> 0.2.4'
+  s.add_dependency 'friendly_extensions', '~> 0.2.6'
   s.add_runtime_dependency 'dragonfly'
   s.add_dependency 'smart_search', '~> 0.0.79'
 end
