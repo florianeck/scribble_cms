@@ -3,7 +3,7 @@
 
 window.initScribblerTinyMce = function(){
   tinymce.remove("textarea")
-  tinyMCE.init({
+  $('textarea').not('.plain').tinymce({
     mode: 'textareas',
     theme: 'modern',
     plugins: "autolink code colorpicker hr image link lists paste table textcolor",

@@ -12,7 +12,7 @@ module ScribbleCms
   self.tiny_mce_js  = "Alchemy.Tinymce.initAll();"
 
   def self.js_files
-    ['ext/tinymce.min.js', 'scribbler.js']
+    ['ext/tinymce.min.js', 'ext/jquery.tinymce.min.js', 'scribbler.js']
   end
 
   def self.css_files
